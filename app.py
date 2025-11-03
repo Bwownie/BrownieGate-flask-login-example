@@ -27,14 +27,22 @@ brownieclient = BrownieClient(
 )
 
 class User(UserMixin):
-    def __init__(self, user_id):
+    def __init__(self, user_id, username):
         self.id = user_id
+        self.username = username
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User(user_id)
+    try:
+        success, data = brownieclient.get_user_data(user_id)
+    except Exception:
+        success = False
+        data = {}
+    if success:
+        username = data.get('username')
+        
+    return User(user_id, username)
 
-# --- Routes ---
 @app.route('/')
 def index():
     return redirect(url_for('login'))
@@ -47,7 +55,7 @@ def login():
 @app.route('/home')
 @login_required
 def home():
-    return render_template('home.html', user_id=current_user.id)
+    return render_template('home.html', username=current_user.username)
 
 @app.route('/callback')
 def callback():
@@ -63,8 +71,16 @@ def callback():
 
     if not success:
         return "Authentication failed", 401
-
-    user = User(user_id)
+    
+    try:
+        success, data = brownieclient.get_user_data(user_id)
+    except Exception:
+        success = False
+        data = {}
+    if success:
+        username = data.get('username')
+    
+    user = User(user_id, username)
     login_user(user)
 
     return redirect(url_for("home"))
