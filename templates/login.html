@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Login</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+	<div class="login-container" role="main" aria-labelledby="login-title">
+		<h1 id="login-title">Sign in with BrownieGate</h1>
+
+		<p>
+			<button id="bg-login-btn" aria-label="Login with BrownieGate" onclick="window.location.href = '{{ brownie_gate_url }}'">Login with BrownieGate</button>
+		</p>
+
+	</div>
+</body>
+</html>
