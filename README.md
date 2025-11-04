@@ -8,9 +8,8 @@ This example is intended for learning and prototyping only. It shows:
 - how to persist sessions either with BrownieGate-encrypted cookies or with server-side sessions
 - a simple, clean UI to exercise the flows
 
-See the BrownieGate package for full API docs and production guidance:
-https://github.com/Bwownie/BrownieGate-package
-or https://www.browniegate.xyz/dev/docs
+Python package: https://github.com/Bwownie/BrownieGate-package
+BrownieGate docs: https://www.browniegate.xyz/dev/docs
 
 ---
 
