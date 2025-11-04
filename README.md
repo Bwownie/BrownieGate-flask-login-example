@@ -1,6 +1,6 @@
 # 🍫 BrownieGate — Flask Login Example
 
-This repository is a minimal, opinionated example showing how to integrate Flask-Login with the BrownieGate Python package (brownieGate). It demonstrates typical authentication flows, session handling, and two small example apps that illustrate cookie-based and non-cookie-based integrations.
+This repository is a minimal, opinionated example showing how to integrate Flask-Login with the BrownieGate Python package (BrownieGate). It demonstrates typical authentication flows, session handling, and two small example apps that illustrate cookie-based and non-cookie-based integrations.
 
 This example is intended for learning and prototyping only. It shows:
 - how to authenticate users using the BrownieGate SDK
@@ -9,7 +9,7 @@ This example is intended for learning and prototyping only. It shows:
 - a simple, clean UI to exercise the flows
 
 See the BrownieGate package for full API docs and production guidance:
-https://github.com/Bwownie/brownieGate-package
+https://github.com/Bwownie/BrownieGate-package
 or https://www.browniegate.xyz/dev/docs
 
 ---
@@ -21,7 +21,7 @@ or https://www.browniegate.xyz/dev/docs
 - templates/: shared templates used by the examples
 - static/: CSS used by the example UI
 - run.py: convenience entrypoint to run either example
-- requirements.txt: Python dependencies (includes brownieGate as a dependency)
+- requirements.txt: Python dependencies (includes BrownieGate as a dependency)
 
 ---
 
@@ -48,17 +48,17 @@ Install runtime dependencies:
 pip install -r requirements.txt
 ```
 
-For local development of the brownieGate package (edit & test the SDK locally), install the package in editable mode from your local clone:
+For local development of the BrownieGate package (edit & test the SDK locally), install the package in editable mode from your local clone:
 
 ```bash
 # from the sibling directory where you cloned the package
-pip install -e ../brownieGate-package
+pip install -e ../BrownieGate-package
 ```
 
 Or install the latest package directly from the repo:
 
 ```bash
-pip install -U git+https://github.com/Bwownie/brownieGate-package
+pip install -U git+https://github.com/Bwownie/BrownieGate-package
 ```
 
 ---
@@ -121,7 +121,7 @@ The "with_cookies" example demonstrates how BrownieGate-provided encrypted cooki
 
 ## How BrownieGate integrates (high-level)
 
-- The Flask app calls functions from the brownieGate client (for example, to authenticate users or verify cookies).
+- The Flask app calls functions from the BrownieGate client (for example, to authenticate users or verify cookies).
 - The returned BrownieGate user object is adapted to Flask-Login by a small adapter (implements get_id(), is_active, etc.). The adapter code lives in the app package used by the examples.
 - Flask-Login handles session management on top of that adapter. For cookie flows the app relies on BrownieGate to produce/validate encrypted cookie payloads.
 
@@ -151,7 +151,7 @@ This repo is for demonstration. Do not use it in production without hardening:
 ## License & author
 
 Author: Bwownie  
-BrownieGate package: https://github.com/Bwownie/brownieGate-package
+BrownieGate package: https://github.com/Bwownie/BrownieGate-package
 
 See LICENSE in this repository for license details.
 
