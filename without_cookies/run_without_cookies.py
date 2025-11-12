@@ -49,6 +49,8 @@ def index():
 
 @app.route('/login')
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
     return render_template('login.html', brownie_gate_url=brownie_gate_url)
 
 @app.route('/home')
@@ -56,7 +58,7 @@ def login():
 def home():
     return render_template('home.html', username=current_user.username)
 
-@app.route('/callback')
+@app.route('/auth/callback')
 def callback():
     payload = request.args.get("payload")
     if not payload:
