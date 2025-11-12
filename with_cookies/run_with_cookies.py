@@ -59,30 +59,27 @@ def load_user_from_cookie():
         resp.delete_cookie('auth')
         return resp
 
-
 @login_manager.user_loader
 def load_user(user_id):
     username = session.get('username')
     return User(user_id, username)
 
-
 @app.route('/')
 def index():
     return redirect(url_for('login'))
 
-
 @app.route('/login')
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
     return render_template('login.html', brownie_gate_url=brownie_gate_url)
-
 
 @app.route('/home')
 @login_required
 def home():
     return render_template('home.html', username=current_user.username)
 
-
-@app.route('/callback')
+@app.route('/auth/callback')
 def callback():
     payload = request.args.get("payload")
     if not payload:
@@ -111,7 +108,6 @@ def callback():
     login_user(user)
 
     return resp
-
 
 @app.route('/logout')
 @login_required
