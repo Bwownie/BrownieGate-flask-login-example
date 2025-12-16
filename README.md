@@ -74,13 +74,10 @@ ENCRYPTION_KEY=''   # Enter your Fernet encryption key provided by BrownieGate
 
 # Flask / local settings
 SECRET_KEY='replace-with-a-secure-random-string'
-FLASK_ENV=development
-FLASK_APP=run.py
 
 Notes:
 - The examples in this repo currently read PROJECT_UUID, API_KEY, and ENCRYPTION_KEY from the environment (these names match the included .env file you provided).
 - SECRET_KEY must be set before creating the Flask app (sessions and CSRF depend on it).
-- If you change environment variable names in the code, update .env accordingly. Alternatively, update the code to use BROWNIEGATE_* style variables if you prefer namespacing.
 
 ---
 
@@ -91,19 +88,12 @@ There are two example directories to illustrate different session strategies. Fr
 Run the cookie-based example:
 
 ```bash
-# run.py accepts an environment variable to select example; default is with_cookies
-export EXAMPLE=with_cookies
-export FLASK_APP=run.py
-export FLASK_ENV=development
-flask run
-# or
-python run.py --example with_cookies
+python run.py  with_cookies
 ```
 
 Run the non-cookie (server-side session) example:
 
 ```bash
-export EXAMPLE=without_cookies
 python run.py --example without_cookies
 ```
 
